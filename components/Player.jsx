@@ -68,6 +68,8 @@ const Player = ({ globalCurrentSongId, setGlobalCurrentSongId, globalIsTrackPlay
                     // get the currently playing song from spotify
                     const data = await getCurrentlyPlaying()
                     setGlobalCurrentSongId(data?.item?.id)
+                    console.log("Currently Playing")
+                    console.log(data)
                     if (data.is_playing) {
                         setGlobalIsTrackPlaying(true)
                     }
@@ -82,7 +84,7 @@ const Player = ({ globalCurrentSongId, setGlobalCurrentSongId, globalIsTrackPlay
     }, [globalCurrentSongId])
 
     return (
-        <div className='h-24 bg-neutral-800 border-t border-neutral-700 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8'>
+        <div className='h-24 bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 shadow-lg border-t border-neutral-700 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8'>
             <div className='flex items-center space-x-4'>
                 {songInfo?.album.images[0].url && <img className='hidden md:inline h-10 w-10' src={songInfo.album.images[0].url} />}
                 <div>
@@ -91,7 +93,7 @@ const Player = ({ globalCurrentSongId, setGlobalCurrentSongId, globalIsTrackPlay
                 </div>
             </div>
             <div className='flex items-center justify-center'>
-                {globalIsTrackPlaying ? <PauseCircleIcon onClick={handlePlayPause} className='h-10 w-10' /> : <PlayCircleIcon onClick={handlePlayPause} className='h-10 w-10' />}
+                {globalIsTrackPlaying ? <PauseCircleIcon onClick={handlePlayPause} className='h-10 cursor-pointer w-10' /> : <PlayCircleIcon onClick={handlePlayPause} className='h-10 cursor-pointer w-10' />}
             </div>
             <div></div>
         </div>

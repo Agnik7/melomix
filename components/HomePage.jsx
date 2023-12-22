@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import FeaturedPlaylists from './FeaturedPlaylists';
 import SearchResults from './SearchResults';
 
-const Search = ({ setView, setGlobalPlaylistId, setGlobalCurrentSongId, setGlobalIsTrackPlaying, setGlobalArtistId }) => {
+const HomePage = ({ setView, setGlobalPlaylistId, setGlobalCurrentSongId, setGlobalIsTrackPlaying, setGlobalArtistId }) => {
     const { data: session } = useSession()
     const [searchData, setSearchData] = useState(null)
     const [inputValue, setInputValue] = useState('')
@@ -63,4 +63,4 @@ const Search = ({ setView, setGlobalPlaylistId, setGlobalCurrentSongId, setGloba
     );
 }
 
-export default Search;
+export default HomePage;

@@ -25,13 +25,13 @@ const Sidebar = ({ view, setView, setGlobalPlaylistId }) => {
         f()
     }, [session])
     return (
-        <div className='w-64 text-neutral-400 grow-0 shrink-0 h-screen overflow-y-scroll border-r border-neutral-900 p-5 text-sm hidden md:inline-flex'>
+        <div className='w-64 text-neutral-400 bg-gradient-to-br from-purple-800 via-purple-800 to-black grow-0 shrink-0 h-screen overflow-y-scroll border-r border-neutral-900 p-5 text-sm hidden md:inline-flex'>
             <div className='space-y-4'>
-                <div className='mt-1 mb-5'>
+                <div className='mt-1 mb-[2rem] cursor-pointer' onClick={()=>setView("home")}>
                     <h1 className='text-white text-[2rem] font-bold text-center'>MeloMix</h1>
                 </div>
 
-                <button className='flex items-center text-[1.2rem] space-x-2 hover:text-white' onClick={()=>setView("search")}>
+                <button className={`flex items-center text-[1.2rem] space-x-2 hover:text-white ${view == "home" ? "text-white" : null}`} onClick={()=>setView("home")}>
                     <HomeIcon className='h-[1.5rem] w-[1.5rem]' />
                     <p>Home</p>
                 </button>
@@ -43,7 +43,7 @@ const Sidebar = ({ view, setView, setGlobalPlaylistId }) => {
                     <BuildingLibraryIcon className='h-[1.5rem] w-[1.5rem]' />
                     <p>Your Library</p>
                 </button>
-                <hr className='border-black' />
+                <hr className='border-white' />
                 <button className='flex items-center space-x-2 text-[1.2rem] hover:text-white'>
                     <PlusCircleIcon className='h-[1.5rem] w-[1.5rem]' />
                     <p>Create Playlist</p>
@@ -52,9 +52,9 @@ const Sidebar = ({ view, setView, setGlobalPlaylistId }) => {
                     <HeartIcon className='h-[1.5rem] w-[1.5rem]' />
                     <p>Liked Songs</p>
                 </button>
-                <hr className='border-neutral-900' />
+                <hr className='border-white' />
                 {
-                    playlists.map((playlist) => {
+                    playlists && playlists.map((playlist) => {
                         return (
                             <p
                                 onClick={() => {
@@ -62,7 +62,7 @@ const Sidebar = ({ view, setView, setGlobalPlaylistId }) => {
                                     setGlobalPlaylistId(playlist.id)
                                 }}
                                 key={playlist.id}
-                                className='cursor-default text-[1.2rem] hover:text-white '
+                                className='cursor-default text-[1.2rem] hover:text-white hover:cursor-pointer'
                             >
                                 {playlist.name}
                             </p>
