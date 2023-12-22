@@ -73,7 +73,7 @@ const PlaylistView = ({ globalPlaylistId, setGlobalCurrentSongId, setGlobalIsTra
                         <p>{playlistData?.name}</p>
                     </div>
                     <div onClick={() => signOut()} className='md:absolute z-20 md:top-5 md:right-8 flex items-center bg-[blue] bg-opacity-70 text-white space-x-3 opacity-90 hover:bg-blue-600 cursor-pointer rounded-full p-1 px-[2rem]'>
-                        {/* <img className='rounded-full w-7 h-7' src={session?.user.image} alt="profile pic" /> */}
+                        
                         <p className='w-full text-center text-[1.5rem]'>Logout</p>
                         {/* <ChevronDownIcon className='h-5 w-5' /> */}
                     </div>
