@@ -28,13 +28,23 @@ const Library = ({ setView, setGlobalPlaylistId }) => {
     }, [session])
     return (
         <div className='flex-grow h-screen'>
-            <header className='text-white bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 shadow-lg sticky top-0 h-20 z-10 text-4xl'>
+            <header className='text-white sticky bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 shadow-lg py-[1rem] md:py-0 top-0 md:h-20 z-10 text-4xl flex flex-col gap-[2rem] md:flex-row justify-between items-center px-8'>
+                <div className='md:hidden  w-full flex flex-col gap-[1rem] xxxs:flex-row justify-between'>
+                    <h1 className='text-[1.5rem] xxs:text-[2rem] text-white font-bold'>MeloMix</h1>
+                    <ul className='text-[1rem] flex gap-[0.5rem]'>
+                        <li className='cursor-pointer' onClick={()=>setView("home")}>Home</li>
+                        <li className='cursor-pointer' onClick={()=>setView("search")}>Search</li>
+                        <li className='cursor-pointer' onClick={()=>setView("library")}>Library</li>
+                    </ul>
+                </div>
+                <div className='w-full flex gap-[2rem] flex-col xs:flex-row justify-end'>
+                    <div onClick={() => signOut()} className='md:absolute z-20 md:top-5 md:right-8 flex items-center bg-[blue] bg-opacity-70 text-white space-x-3 opacity-90 hover:bg-blue-600 cursor-pointer rounded-full p-1 px-[2rem]'>
+                        {/* <img className='rounded-full w-7 h-7' src={session?.user.image} alt="profile pic" /> */}
+                        <p className='text-center w-full text-[1.2rem] xmd:text-[1.5rem]'>Logout</p>
+                        {/* <ChevronDownIcon className='h-5 w-5' /> */}
+                    </div>
+                </div>
             </header>
-            <div onClick={() => signOut()} className='absolute z-20 top-5 right-8 flex items-center bg-[blue] bg-opacity-70 text-white space-x-3 opacity-90 hover:bg-blue-600 cursor-pointer rounded-full p-1 px-[2rem]'>
-                {/* <img className='rounded-full w-7 h-7' src={session?.user.image} alt="profile pic" /> */}
-                <p className='text-[1.5rem]'>Logout</p>
-                {/* <ChevronDownIcon className='h-5 w-5' /> */}
-            </div>
             <div className='flex flex-col gap-4 px-8 h-screen overflow-y-scroll'>
                 <h2 className='text-[2rem] text-purple-100 font-bold'>Playlists</h2>
                 <div className='flex flex-wrap gap-6 mb-48'>

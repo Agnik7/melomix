@@ -87,17 +87,27 @@ const Artist = ({ setView, globalArtistId, setGlobalArtistId, setGlobalCurrentSo
 
     return (
         <div className='flex-grow h-screen'>
-            <header style={{ opacity: opacity }} className='text-white sticky top-0 h-20 z-10 text-4xl bg-[#17153a] p-8 flex items-center font-bold'>
-                <div style={{ opacity: textOpacity }} className='flex items-center'>
-                    {artistData && <img className='h-8 w-8 mr-6' src={artistData.images[0].url} />}
-                    <p>{artistData?.name}</p>
+            <header style={{ opacity: opacity }} className='text-white sticky py-[2rem] px-8 top-0 md:h-20 z-10 text-2xl xs:text-4xl bg-[#17153a] xs:p-8 flex flex-col gap-[2rem] justify-between md:flex-row items-center font-bold'>
+                <div className='md:hidden  w-full flex flex-col gap-[1rem] xxxs:flex-row justify-between'>
+                    <h1 className='text-[1.5rem] xxs:text-[2rem] text-white font-bold'>MeloMix</h1>
+                    <ul className='text-[1rem] flex gap-[0.5rem]'>
+                        <li className='cursor-pointer' onClick={()=>setView("home")}>Home</li>
+                        <li className='cursor-pointer' onClick={()=>setView("search")}>Search</li>
+                        <li className='cursor-pointer' onClick={()=>setView("library")}>Library</li>
+                    </ul>
+                </div>
+                <div className='w-full flex flex-col gap-[2rem] xs:flex-row justify-between'>
+                    <div style={{ opacity: textOpacity }} className='flex items-center'>
+                        {artistData && <img className='h-8 w-8 mr-6' src={artistData.images[0].url} />}
+                        <p>{artistData?.name}</p>
+                    </div>
+                    <div onClick={() => signOut()} className='md:absolute z-20 md:top-5 md:right-8 flex items-center bg-[blue] bg-opacity-70 text-white space-x-3 opacity-90 hover:bg-blue-600 cursor-pointer rounded-full p-1 px-[2rem]'>
+                        {/* <img className='rounded-full w-7 h-7' src={session?.user.image} alt="profile pic" /> */}
+                        <p className='w-full text-center text-[1.5rem]'>Logout</p>
+                        {/* <ChevronDownIcon className='h-5 w-5' /> */}
+                    </div>
                 </div>
             </header>
-            <div onClick={() => signOut()} className='absolute z-20 top-5 right-8 flex items-center bg-[blue] bg-opacity-70 text-white space-x-3 opacity-90 hover:bg-blue-600 cursor-pointer rounded-full p-1 px-[2rem]'>
-                {/* <img className='rounded-full w-7 h-7' src={session?.user.image} alt="profile pic" /> */}
-                <p className='text-[1.5rem]'>Logout</p>
-                {/* <ChevronDownIcon className='h-5 w-5' /> */}
-            </div>
             <div onScroll={(e) => changeOpacity(e.target.scrollTop)} className='relative -top-20 h-screen overflow-y-scroll '>
                 <section className={`flex items-end space-x-7 bg-gradient-to-b to-slate-900 ${color} h-80 text-white p-8`}>
                     {artistData && <img className='h-44 w-44 rounded-full' src={artistData.images[0].url} />}

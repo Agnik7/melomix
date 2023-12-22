@@ -28,22 +28,36 @@ const HomePage = ({ setView, setGlobalPlaylistId, setGlobalCurrentSongId, setGlo
 
     return (
         <div className='flex-grow h-screen'>
-            <header className='text-white sticky bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 shadow-lg top-0 h-20 z-10 text-4xl flex items-center px-8'>
-                <MagnifyingGlassIcon className='absolute top-7 left-10 h-6 w-6 text-neutral-800' />
-                <input value={inputValue} onChange={async (e) => {
+            <header className='text-white sticky bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 shadow-lg py-[1rem] md:py-0 top-0 md:h-20 z-10 text-4xl flex flex-col gap-[2rem] md:flex-row justify-between items-center px-8'>
+                <div className='md:hidden  w-full flex flex-col gap-[1rem] xxxs:flex-row justify-between'>
+                    <h1 className='text-[1.5rem] xxs:text-[2rem] text-white font-bold'>MeloMix</h1>
+                    <ul className='text-[1rem] flex gap-[0.5rem]'>
+                        <li className='cursor-pointer' onClick={()=>setView("home")}>Home</li>
+                        <li className='cursor-pointer' onClick={()=>setView("search")}>Search</li>
+                        <li className='cursor-pointer' onClick={()=>setView("library")}>Library</li>
+                    </ul>
+                </div>
+                <div className='w-full flex gap-[2rem] flex-col xs:flex-row justify-between'>
+                    <div className='flex gap-2 bg-white rounded-full w-full outline-0 py-2 xs:w-1/2 xmd:w-96 px-[0.5rem]'>
+                        <MagnifyingGlassIcon className='h-6 w-6 text-neutral-800' />
+                        <input value={inputValue} onChange={async (e) => {
 
-                    setInputValue(e.target.value)
-                    if(inputValue.length === 0)
-                        setSearchData(null)
-                    else
-                        await updateSearchResults(e.target.value)
-                }} ref={inputRef} className='rounded-full bg-white w-96 pl-12 text-neutral-900 text-base py-2 font-normal outline-0' />
+                            setInputValue(e.target.value)
+                            if(inputValue.length === 0)
+                                setSearchData(null)
+                            else
+                                await updateSearchResults(e.target.value)
+                        }} ref={inputRef} className=' bg-white  text-neutral-900 text-base  font-normal outline-0' />                    
+                    </div>
+                
+                    <div onClick={() => signOut()} className='md:absolute z-20 md:top-5 md:right-8 flex items-center bg-[blue] bg-opacity-70 text-white space-x-3 opacity-90 hover:bg-blue-600 cursor-pointer rounded-full p-1 px-[2rem]'>
+                        {/* <img className='rounded-full w-7 h-7' src={session?.user.image} alt="profile pic" /> */}
+                        <p className='text-center w-full text-[1.2rem] xmd:text-[1.5rem]'>Logout</p>
+                        {/* <ChevronDownIcon className='h-5 w-5' /> */}
+                    </div>
+
+                </div>
             </header>
-            <div onClick={() => signOut()} className='absolute z-20 top-5 right-8 flex items-center bg-[blue] bg-opacity-70 text-white space-x-3 opacity-90 hover:bg-blue-600 cursor-pointer rounded-full p-1 px-[2rem]'>
-                {/* <img className='rounded-full w-7 h-7' src={session?.user.image} alt="profile pic" /> */}
-                <p className='text-[1.5rem]'>Logout</p>
-                {/* <ChevronDownIcon className='h-5 w-5' /> */}
-            </div>
             <div>
                 {(searchData === null || inputValue.length === 0) ? <FeaturedPlaylists
                     setView={setView}
