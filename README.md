@@ -1,5 +1,6 @@
 # MeloMix
 
+![Landing Page](public/landing_page.png)
 ![Melomix](public/melomix.png)
 
 MeloMix is a dynamic music platform created with NextJs, NextAuth, TailwindCSS, and the Spotify API. Elevate your music experience by seamlessly connecting MeloMix to your Spotify account, unlocking a personalized journey through your playlists, songs, and more. This project showcases a harmonious blend of cutting-edge technologies to provide users with an intuitive and immersive interface.
