@@ -14,7 +14,7 @@ MeloMix is a dynamic music platform created with NextJs, NextAuth, TailwindCSS, 
 
      ```
         git clone https://github.com/Agnik7/melomix.git
-     ```bash
+     ```
 
 2. Create a `.env.local` file and set the following environment variables:
 
@@ -22,20 +22,19 @@ MeloMix is a dynamic music platform created with NextJs, NextAuth, TailwindCSS, 
         SPOTIFY_CLIENT_ID = <Your Spotify Client ID>
         SPOTIFY_SECRET= <Your Spotify Client Secret>
         JWT_SECRET= <Your JWT Secret Key>
-    ```bash
+    ```
 
 2. Install the dependencies.
 
      ```
         npm install
-    ```bash
+    ```
 
 4. Run the application.
 
     ```
         npm run dev
-    ```bash
-
+    ```
 ## Technologies Used
 
 - [NextJs](https://nextjs.org/) - React framework for building server-side rendered and static web applications.
